@@ -1,52 +1,3 @@
-# Saas - Agente Comercial
-
-## Passo a Passo
-
-Um breve Footprint de como foi desenvolvido a base deste projeto. 
-
-### 1. Inicializando o Projeto Next.js 15 (Sem TypeScript e Sem Tailwind 4)
-
-```[bash]
-pnpm create next-app@15 saas-agente-comercial \
-  --javascript \
-  --app \
-  --src-dir \
-  --turbopack \
-  --import-alias "@/*" \
-  --no-tailwind \
-  --no-eslint
-
-cd saas-agente-comercial
-```
-
-### 2. Configurando Tailwind CSS v3.4
-
-```[bash]
-pnpm add -D tailwindcss@^3.4.17 postcss@^8 autoprefixer@^10
-
-pnpm exec tailwindcss init -p
-```
-### 3. Instalando o Arsenal de Qualidade (ESLint 9 + Plugins)
-
-```[bash]
-pnpm add -D eslint@^9.0.0 \
-  @eslint/js \
-  eslint-plugin-react \
-  eslint-plugin-react-hooks \
-  eslint-plugin-jsx-a11y \
-  eslint-plugin-import \
-  eslint-plugin-security \
-  eslint-plugin-sonarjs \
-  eslint-plugin-unicorn \
-  eslint-plugin-jsdoc \
-  eslint-plugin-no-secrets \
-  @eslint/compat \
-  globals
-```
-
-### 4. Criando o `eslint.config.js` (Flat Config)
-
-```[javascript]
 import js from '@eslint/js';
 import globals from 'globals';
 import reactPlugin from 'eslint-plugin-react';
@@ -142,6 +93,3 @@ export default [
     ignores: ['.next/**', 'node_modules/**', 'dist/**', 'public/**'],
   }
 ];
-
-```
-
