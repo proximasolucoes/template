@@ -211,8 +211,18 @@ pnpm exec husky init
 Isso criará uma pasta .husky/ com um arquivo chamado pre-commit. Abra esse arquivo .husky/pre-commit e substitua o conteúdo gerado por este:
 
 ```[bash]
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+pnpm exec lint-staged
+```
+
+Adiciona ao objeto raiz do `package.json`:
+
+```[json]
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "vitest related --run"
+    ]
+  }
 ```
 
 E depois execute:
