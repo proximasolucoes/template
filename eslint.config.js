@@ -8,12 +8,14 @@ import unicornPlugin from 'eslint-plugin-unicorn';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import noSecretsPlugin from 'eslint-plugin-no-secrets';
 import { fixupPluginRules } from '@eslint/compat';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   js.configs.recommended,
   securityPlugin.configs.recommended,
   sonarjsPlugin.configs.recommended,
+  eslintConfigPrettier,
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
