@@ -1,5 +1,5 @@
-import pino from "pino";
-import { env } from "../env.js";
+import pino from 'pino'
+import { env as environment } from '../environment.js'
 
 /**
  * Configuração do stream do logger baseada no ambiente.
@@ -9,26 +9,26 @@ import { env } from "../env.js";
  */
 
 const streamConfig =
-  env.NODE_ENV === "development"
+  environment.NODE_ENV === 'development'
     ? {
         transport: {
-          target: "pino-pretty",
+          target: 'pino-pretty',
           options: {
             colorize: true,
-            ignore: "pid,hostname",
-            translateTime: "HH:MM:ss Z",
+            ignore: 'pid,hostname',
+            translateTime: 'HH:MM:ss Z',
           },
         },
       }
-    : {};
+    : {}
 
 /**
  * Instância global do logger da aplicação.
  * Deve ser utilizada em vez do console.log para qualquer registro no backend.
- * * @type {import('pino').Logger}
+ * @type {import('pino').Logger}
  */
 export const logger = pino({
-  level: env.NODE_ENV === "development" ? "debug" : "info",
-  redact: ["req.headers.authorization", "password", "token", "apiKey"], // Proteção contra vazamento
+  level: environment.NODE_ENV === 'development' ? 'debug' : 'info',
+  redact: ['req.headers.authorization', 'password', 'token', 'apiKey'], // Proteção contra vazamento
   ...streamConfig,
-});
+})
